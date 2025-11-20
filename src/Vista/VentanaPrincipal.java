@@ -29,6 +29,7 @@ public class VentanaPrincipal extends javax.swing.JFrame implements IVista {
         initComponents();
         // Crear controlador vinculando esta vista
         this.controlador = new Controlador(this);
+        
 
         // No crear internal frames por defecto: se instanciarán al abrir el menú.
     }
@@ -42,7 +43,17 @@ public class VentanaPrincipal extends javax.swing.JFrame implements IVista {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        desktopPanePrincipal = new javax.swing.JDesktopPane();
+        desktopPanePrincipal = new javax.swing.JDesktopPane() {
+            private final java.awt.Image imagenFondo = new javax.swing.ImageIcon(
+                getClass().getResource("/Vista/Iconos/bingo-lottery-balls-and-tickets-background-vector.jpg")
+            ).getImage();
+
+            @Override
+            protected void paintComponent(java.awt.Graphics g) {
+                super.paintComponent(g);
+                g.drawImage(imagenFondo, 0, 0, getWidth(), getHeight(), this);
+            }
+        };
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
@@ -54,19 +65,26 @@ public class VentanaPrincipal extends javax.swing.JFrame implements IVista {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        desktopPanePrincipal.setMaximumSize(null);
+        desktopPanePrincipal.setPreferredSize(null);
+
         javax.swing.GroupLayout desktopPanePrincipalLayout = new javax.swing.GroupLayout(desktopPanePrincipal);
         desktopPanePrincipal.setLayout(desktopPanePrincipalLayout);
         desktopPanePrincipalLayout.setHorizontalGroup(
             desktopPanePrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGap(0, 624, Short.MAX_VALUE)
         );
         desktopPanePrincipalLayout.setVerticalGroup(
             desktopPanePrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 277, Short.MAX_VALUE)
+            .addGap(0, 362, Short.MAX_VALUE)
         );
 
-        jMenu1.setText("Cartones");
+        getContentPane().add(desktopPanePrincipal, java.awt.BorderLayout.CENTER);
 
+        jMenu1.setText("Cartones");
+        jMenu1.setFont(new java.awt.Font("Segoe UI", 3, 24)); // NOI18N
+
+        jMenuItem1.setFont(new java.awt.Font("Segoe UI", 3, 18)); // NOI18N
         jMenuItem1.setText("Cartones");
         jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -78,8 +96,10 @@ public class VentanaPrincipal extends javax.swing.JFrame implements IVista {
         jMenuBar1.add(jMenu1);
 
         jMenu2.setText("Tombola");
+        jMenu2.setFont(new java.awt.Font("Segoe UI", 3, 24)); // NOI18N
 
-        jMenuItem2.setText("jMenuItem2");
+        jMenuItem2.setFont(new java.awt.Font("Segoe UI", 3, 18)); // NOI18N
+        jMenuItem2.setText("Tombola");
         jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuItem2ActionPerformed(evt);
@@ -90,7 +110,9 @@ public class VentanaPrincipal extends javax.swing.JFrame implements IVista {
         jMenuBar1.add(jMenu2);
 
         jMenu3.setText("Tablero");
+        jMenu3.setFont(new java.awt.Font("Segoe UI", 3, 24)); // NOI18N
 
+        jMenuItem3.setFont(new java.awt.Font("Segoe UI", 3, 18)); // NOI18N
         jMenuItem3.setText("Tablero");
         jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -103,17 +125,6 @@ public class VentanaPrincipal extends javax.swing.JFrame implements IVista {
         jMenuBar1.add(jMenu4);
 
         setJMenuBar(jMenuBar1);
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(desktopPanePrincipal)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(desktopPanePrincipal)
-        );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents

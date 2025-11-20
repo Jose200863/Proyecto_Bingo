@@ -68,6 +68,8 @@ public class VentanaCartones extends javax.swing.JInternalFrame{
         btnCrearCarton = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
         cmbTipoJuego = new javax.swing.JComboBox<>();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
         btnGuaradarManual = new javax.swing.JButton();
@@ -112,9 +114,11 @@ public class VentanaCartones extends javax.swing.JInternalFrame{
         PCrearCartones.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 153, 0));
         jLabel2.setText("Cartones");
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(0, 204, 204));
         jLabel3.setText("Id del carton");
 
         cmbModo.addActionListener(new java.awt.event.ActionListener() {
@@ -124,6 +128,7 @@ public class VentanaCartones extends javax.swing.JInternalFrame{
         });
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(0, 102, 102));
         jLabel4.setText("Modo Juego");
 
         btnCrearCarton.setBackground(new java.awt.Color(255, 204, 0));
@@ -136,7 +141,12 @@ public class VentanaCartones extends javax.swing.JInternalFrame{
         });
 
         jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(0, 153, 255));
         jLabel6.setText("Tipo Juego");
+
+        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/Iconos/ModJuego.png"))); // NOI18N
+
+        jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/Iconos/TipoJuego-removebg-preview.png"))); // NOI18N
 
         javax.swing.GroupLayout PCrearCartonesLayout = new javax.swing.GroupLayout(PCrearCartones);
         PCrearCartones.setLayout(PCrearCartonesLayout);
@@ -146,6 +156,21 @@ public class VentanaCartones extends javax.swing.JInternalFrame{
                 .addGroup(PCrearCartonesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(PCrearCartonesLayout.createSequentialGroup()
                         .addContainerGap()
+                        .addGroup(PCrearCartonesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(PCrearCartonesLayout.createSequentialGroup()
+                                .addComponent(cmbModo, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(PCrearCartonesLayout.createSequentialGroup()
+                                .addGroup(PCrearCartonesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(cmbTipoJuego, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(btnCrearCarton))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(PCrearCartonesLayout.createSequentialGroup()
+                        .addContainerGap()
                         .addGroup(PCrearCartonesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addComponent(tblId, javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
@@ -153,20 +178,8 @@ public class VentanaCartones extends javax.swing.JInternalFrame{
                         .addGap(26, 26, 26)
                         .addComponent(jLabel2)
                         .addGap(54, 54, 54)
-                        .addComponent(jLabel1))
-                    .addGroup(PCrearCartonesLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(PCrearCartonesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(cmbTipoJuego, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(PCrearCartonesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(jLabel6, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGroup(PCrearCartonesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(cmbModo, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                    .addGroup(PCrearCartonesLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(btnCrearCarton)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(jLabel1)))
+                .addGap(0, 6, Short.MAX_VALUE))
         );
         PCrearCartonesLayout.setVerticalGroup(
             PCrearCartonesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -182,13 +195,18 @@ public class VentanaCartones extends javax.swing.JInternalFrame{
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel4)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(cmbModo, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addGroup(PCrearCartonesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cmbModo, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(0, 0, 0)
                 .addComponent(jLabel6)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(cmbTipoJuego, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btnCrearCarton)
+                .addGroup(PCrearCartonesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(PCrearCartonesLayout.createSequentialGroup()
+                        .addComponent(cmbTipoJuego, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btnCrearCarton))
+                    .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(12, Short.MAX_VALUE))
         );
 
@@ -196,10 +214,11 @@ public class VentanaCartones extends javax.swing.JInternalFrame{
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(204, 0, 0));
         jLabel5.setText("Tabla Carton");
-        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 10, -1, -1));
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 10, -1, -1));
 
-        btnGuaradarManual.setBackground(new java.awt.Color(204, 204, 204));
+        btnGuaradarManual.setBackground(new java.awt.Color(0, 204, 204));
         btnGuaradarManual.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btnGuaradarManual.setText("Guardar Numero");
         btnGuaradarManual.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -210,7 +229,7 @@ public class VentanaCartones extends javax.swing.JInternalFrame{
         });
         jPanel1.add(btnGuaradarManual, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 40, -1, 20));
 
-        btnEliminar.setBackground(new java.awt.Color(204, 204, 204));
+        btnEliminar.setBackground(new java.awt.Color(0, 204, 204));
         btnEliminar.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btnEliminar.setText("Eliminar Carton");
         btnEliminar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -221,13 +240,12 @@ public class VentanaCartones extends javax.swing.JInternalFrame{
         });
         jPanel1.add(btnEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 40, -1, -1));
 
-        
-
         jLabel37.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel37.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jPanel1.add(jLabel37, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 280, 60, 30));
 
         jLabel38.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel38.setForeground(new java.awt.Color(204, 102, 0));
         jLabel38.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel38.setText("B");
         jLabel38.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -250,24 +268,28 @@ public class VentanaCartones extends javax.swing.JInternalFrame{
         jPanel1.add(jLabel42, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 330, 60, 30));
 
         jLabel43.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel43.setForeground(new java.awt.Color(153, 0, 153));
         jLabel43.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel43.setText("I");
         jLabel43.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jPanel1.add(jLabel43, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 80, 60, 30));
 
         jLabel44.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel44.setForeground(new java.awt.Color(0, 51, 153));
         jLabel44.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel44.setText("N");
         jLabel44.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jPanel1.add(jLabel44, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 80, 60, 30));
 
         jLabel45.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel45.setForeground(new java.awt.Color(0, 102, 102));
         jLabel45.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel45.setText("G");
         jLabel45.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jPanel1.add(jLabel45, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 80, 60, 30));
 
         jLabel46.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel46.setForeground(new java.awt.Color(0, 204, 0));
         jLabel46.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel46.setText("O");
         jLabel46.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -563,7 +585,6 @@ public class VentanaCartones extends javax.swing.JInternalFrame{
     private javax.swing.JButton btnCrearCarton;
     private javax.swing.JButton btnEliminar;
     private javax.swing.JButton btnGuaradarManual;
-    
     private javax.swing.JComboBox<String> cmbModo;
     private javax.swing.JComboBox<String> cmbTipoJuego;
     private javax.swing.JLabel jLabel1;
@@ -600,8 +621,10 @@ public class VentanaCartones extends javax.swing.JInternalFrame{
     private javax.swing.JLabel jLabel67;
     private javax.swing.JLabel jLabel68;
     private javax.swing.JLabel jLabel69;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel70;
     private javax.swing.JLabel jLabel71;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPasswordField jPasswordField1;
     private javax.swing.JTextField tblId;
