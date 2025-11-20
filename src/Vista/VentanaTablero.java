@@ -47,7 +47,6 @@ public class VentanaTablero extends javax.swing.JInternalFrame{
                                 l.setForeground(Color.BLACK);
                             }
                         } catch (NumberFormatException ex) {
-                            // ignore non-numeric labels
                         }
                     }
                 }

@@ -8,6 +8,7 @@ import Controlador.Controlador;
 import Modelo.Carton;
 import Modelo.EnumModoJuego;
 import Modelo.EnumTipoJuego;
+import Modelo.GestorMemoria;
 import javax.swing.JOptionPane;
 
 
@@ -268,7 +269,7 @@ public class VentanaPrincipal extends javax.swing.JFrame implements IVista {
     @Override
     public void actualizarVista() {
         // Propagar último número marcado a los cartones para que se pinten
-        Integer ultimo = Modelo.GestorMemoria.obtenerInstancia().obtenerTombola().getUltimoNumero();
+        Integer ultimo = GestorMemoria.obtenerInstancia().obtenerTombola().getUltimoNumero();
         if (ultimo != null && ultimo > 0) {
             for (java.awt.Component c : desktopPanePrincipal.getComponents()) {
                 if (c instanceof VentanaCartones) {

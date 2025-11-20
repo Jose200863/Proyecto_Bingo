@@ -5,6 +5,8 @@
 package Vista;
 
 import Controlador.Controlador;
+import Modelo.Carton;
+import Modelo.GestorMemoria;
 
 
 /**
@@ -431,22 +433,22 @@ public class VentanaCartones extends javax.swing.JInternalFrame{
             return;
         }
 
-        String filaStr = javax.swing.JOptionPane.showInputDialog(this, "Fila (1-5):");
-        if (filaStr == null) return;
-        String colStr = javax.swing.JOptionPane.showInputDialog(this, "Columna (1-5):");
-        if (colStr == null) return;
-        String valStr = javax.swing.JOptionPane.showInputDialog(this, "Valor (0 para borrar):");
-        if (valStr == null) return;
+        String filas = javax.swing.JOptionPane.showInputDialog(this, "Fila (1-5):");
+        if (filas == null) return;
+        String colum = javax.swing.JOptionPane.showInputDialog(this, "Columna (1-5):");
+        if (colum == null) return;
+        String valor = javax.swing.JOptionPane.showInputDialog(this, "Valor (0 para borrar):");
+        if (valor == null) return;
 
         try {
-            int fila = Integer.parseInt(filaStr) - 1;
-            int col = Integer.parseInt(colStr) - 1;
-            int val = Integer.parseInt(valStr);
+            int fila = Integer.parseInt(filas) - 1;
+            int col = Integer.parseInt(colum) - 1;
+            int val = Integer.parseInt(valor);
             if (controlador != null) {
                 controlador.solicitarIngresoManual(id, fila, col, val);
                 // Actualizar vista local
                 // Intentar obtener el cartón desde el gestor y mostrarlo
-                Modelo.Carton c = Modelo.GestorMemoria.obtenerInstancia().obtenerCarton(id);
+                Carton c = GestorMemoria.obtenerInstancia().obtenerCarton(id);
                 if (c != null) mostrarCarton(c);
             }
         } catch (NumberFormatException ex) {
@@ -479,7 +481,7 @@ public class VentanaCartones extends javax.swing.JInternalFrame{
         }
         javax.swing.JOptionPane.showMessageDialog(this, sb.toString(), "Cartón", javax.swing.JOptionPane.INFORMATION_MESSAGE);
 
-        // También actualizar la grilla visual del panel (intento heurístico)
+        // También actualizar la grilla visual del panel 
         java.util.List<javax.swing.JLabel> labels = new java.util.ArrayList<>();
         for (java.awt.Component c : jPanel1.getComponents()) {
             if (c instanceof javax.swing.JLabel) {
@@ -499,8 +501,8 @@ public class VentanaCartones extends javax.swing.JInternalFrame{
         });
 
         // Asegurar que haya al menos 25 labels detectados
-        int needed = 25;
-        if (labels.size() >= needed) {
+        int label = 25;
+        if (labels.size() >= label) {
             int idx = 0;
             for (int i = 0; i < 5; i++) {
                 for (int j = 0; j < 5; j++) {
