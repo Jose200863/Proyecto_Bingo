@@ -70,8 +70,6 @@ public class ServicioJuego {
     }
     
     public static class ResultadoGanador {
-// Clase interna porque este resultado solo pertenece a ServicioJuego.
-// Evita usar map o listas separadas y mantiene todo encapsulado y ordenado.
         private String idCarton;
         private String tipoVictoria;
         

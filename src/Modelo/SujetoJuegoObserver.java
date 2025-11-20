@@ -41,7 +41,7 @@ public class SujetoJuegoObserver {
     }
         protected void notificarNumeroDesmarcado(int numero){
         for(IObservadorJuego obs : observadores){
-            obs.onNumeroMarcado(numero); // Puede usar el mismo método o crear uno nuevo
+            obs.onNumeroMarcado(numero); 
         }
     }
         protected void notificarCartonEliminado(String id){

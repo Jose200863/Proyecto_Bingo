@@ -60,7 +60,7 @@ public class Servicio extends SujetoJuegoObserver {
             throw new IllegalArgumentException("El ID del cartón no puede estar vacío.");
         }
 
-        // Evitar IDs duplicados
+        // Evitar ID duplicados
         if (gestor.obtenerCarton(id) != null) {
             throw new IllegalArgumentException("Ya existe un cartón con el ID: " + id);
         }
@@ -76,65 +76,46 @@ public class Servicio extends SujetoJuegoObserver {
     }
 
     public void validarYGuardarCartonManual(Carton carton) {
-        // 1. OBTENER DATOS Y ESTRUCTURA DE VALIDACIÓN
+        //OBTENER DATOS Y ESTRUCTURA DE VALIDACIÓN
         int[][] numeros = carton.getNumerosCarton();
-        // Asumo que tienes una instancia de tu gestor, por ejemplo:
         GestorMemoria gestor = GestorMemoria.obtenerInstancia();
 
-        // Conjunto para verificar la unicidad de los números DENTRO de este cartón.
-        // Aunque el controlador revisa esto celda por celda, es la última validación de integridad.
         Set<Integer> numerosUsados = new HashSet<>();
 
-        // 2. VALIDACIÓN DE COMPLETITUD Y REGLAS (24 CELDAS)
+        // VALIDACIÓN DE COMPLETITUD Y REGLAS (24 CELDAS)
         for (int i = 0; i < 5; i++) {
             for (int j = 0; j < 5; j++) {
-                // A. Omitir la celda central (2, 2)
+                // Omitir la celda central (2, 2)
                 if (i == 2 && j == 2) {
                     continue;
                 }
 
                 int valorCelda = numeros[i][j];
 
-                // B. Verificar Completitud (que no haya valores vacíos/cero)
+                // Verificar Completitud (que no haya valores vacíos/cero)
                 if (valorCelda <= 0) {
                     throw new IllegalArgumentException("El cartón con ID " + carton.getId() + " está incompleto. Faltan números.");
                 }
 
-                // C. Verificar Rango por Columna (j=0 es Columna B, j=1 es Columna I, etc.)
+                // Verificar Rango por Columna (j=0 es Columna B, j=1 es Columna I, etc.)
                 if (!validarNumeroEnRangoParaColumna(valorCelda, j)) {
                     throw new IllegalArgumentException("El número " + valorCelda + " está fuera del rango permitido para la columna " + getLetraColumna(j) + ".");
                 }
 
-                // D. Verificar Unicidad DENTRO del cartón
                 if (numerosUsados.contains(valorCelda)) {
                     throw new IllegalArgumentException("El número " + valorCelda + " está repetido en el cartón. Todos los números deben ser únicos.");
                 }
                 numerosUsados.add(valorCelda);
             }
         }
-
-        // 3. FINALIZACIÓN: El cartón ya está en memoria (se agregó al crearlo),
-        // por lo que aquí sólo validamos y permitimos continuar. Si desea
-        // persistir externamente, se haría aquí.
-
-        // Si todo va bien, el método finaliza sin excepciones.
     }
 
     public boolean eliminarCarton(String id) {
-        // 1. Verificar si el cartón existe ANTES de llamar a eliminar.
-        // Esto permite a GestorMemoria usar List.removeIf más eficientemente,
-        // y nos permite devolver un booleano preciso sin modificar GestorMemoria.
-
         Carton cartonAEliminar = gestor.obtenerCarton(id);
-
         if (cartonAEliminar != null) {
-            // 2. Si existe, llamamos al método del GestorMemoria.
-            // Nota: En GestorMemoria usaste removeIf, que no devuelve un booleano.
-            // Pero como ya verificamos la existencia, asumimos que se elimina.
             gestor.eliminarCarton(id);
             return true;
         }
-
         return false;
     }
 
@@ -157,18 +138,15 @@ public class Servicio extends SujetoJuegoObserver {
     }
     
     public void marcarNumero(int numero) {
-        // 1. Lógica del Modelo: Usa el patrón Comando para marcar el número 
+        // Lógica del Modelo: Usa el patrón Comando para marcar el número 
         IComando comando = new ComandoMarcarNumero(numero);
         comando.ejecutar();
-
-        // **************** CORRECCIÓN CLAVE ****************
         this.historial.push(comando);
-        // **************************************************
 
-        // 2. Patrón Observer: Notifica a todos los observadores
+        // Patrón Observer: Notifica a todos los observadores
         notificarNumeroMarcado(numero);
 
-        // 3. Verifica si alguien ganó después de la marca
+        // Verifica si alguien ganó después de la marca
         verificarGanadores();
     }
     
@@ -216,12 +194,10 @@ public class Servicio extends SujetoJuegoObserver {
         for (int i = 0; i < 5; i++) {
             for (int j = 0; j < 5; j++) {
 
-                // 1. Evitar revisar la celda que está siendo editada actualmente.
                 if (i == filaActual && j == columnaActual) {
                     continue;
                 }
 
-                // 2. Si el número coincide en cualquier otra celda, es un duplicado.
                 if (numeros[i][j] == numero) {
                     return true;
                 }
@@ -245,7 +221,7 @@ public class Servicio extends SujetoJuegoObserver {
             case 4 ->
                 numero >= 61 && numero <= 75;
             default ->
-                false; // Nunca debería ocurrir
+                false; 
         };
     }
 
