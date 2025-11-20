@@ -9,6 +9,9 @@ import Modelo.Carton;
 import Modelo.EnumModoJuego;
 import Modelo.EnumTipoJuego;
 import Modelo.GestorMemoria;
+import java.awt.Component;
+import java.util.ArrayList;
+import java.util.List;
 import javax.swing.JOptionPane;
 
 
@@ -132,7 +135,7 @@ public class VentanaPrincipal extends javax.swing.JFrame implements IVista {
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
         // Abrir ventana de cartones
-        for (java.awt.Component c : desktopPanePrincipal.getComponents()) {
+        for (Component c : desktopPanePrincipal.getComponents()) {
             if (c instanceof VentanaCartones) {
                 ((VentanaCartones) c).setVisible(true);
                 ((VentanaCartones) c).toFront();
@@ -146,7 +149,7 @@ public class VentanaPrincipal extends javax.swing.JFrame implements IVista {
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
-        for (java.awt.Component c : desktopPanePrincipal.getComponents()) {
+        for (Component c : desktopPanePrincipal.getComponents()) {
             if (c instanceof VentanaTombola) {
                 ((VentanaTombola) c).setVisible(true);
                 ((VentanaTombola) c).toFront();
@@ -160,7 +163,7 @@ public class VentanaPrincipal extends javax.swing.JFrame implements IVista {
     }//GEN-LAST:event_jMenuItem2ActionPerformed
 
     private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
-        for (java.awt.Component c : desktopPanePrincipal.getComponents()) {
+        for (Component c : desktopPanePrincipal.getComponents()) {
             if (c instanceof VentanaTablero) {
                 ((VentanaTablero) c).setVisible(true);
                 ((VentanaTablero) c).toFront();
@@ -173,11 +176,11 @@ public class VentanaPrincipal extends javax.swing.JFrame implements IVista {
         v.setVisible(true);
     }//GEN-LAST:event_jMenuItem3ActionPerformed
 
-    // ==== Implementación mínima de IVista: delega a internal frames o muestra mensajes ====
+    //Implementación mínima de IVista: delega a internal frames o muestra mensajes 
     @Override
     public void mostrarCarton(Carton carton) {
         // Buscar VentanaCartones y delegar
-        for (java.awt.Component c : desktopPanePrincipal.getComponents()) {
+        for (Component c : desktopPanePrincipal.getComponents()) {
             if (c instanceof VentanaCartones) {
                 ((VentanaCartones) c).mostrarCarton(carton);
                 return;
@@ -188,7 +191,7 @@ public class VentanaPrincipal extends javax.swing.JFrame implements IVista {
 
     @Override
     public void actualizarTablero(int numero) {
-        for (java.awt.Component c : desktopPanePrincipal.getComponents()) {
+        for (Component c : desktopPanePrincipal.getComponents()) {
             if (c instanceof VentanaTablero) {
                 ((VentanaTablero) c).marcarNumero(numero);
                 return;
@@ -199,7 +202,7 @@ public class VentanaPrincipal extends javax.swing.JFrame implements IVista {
     @Override
     public void insertarNumeroCarton(Carton Carton) {
         // Delegar a VentanaCartones si existe
-        for (java.awt.Component c : desktopPanePrincipal.getComponents()) {
+        for (Component c : desktopPanePrincipal.getComponents()) {
             if (c instanceof VentanaCartones) {
                 ((VentanaCartones) c).insertarNumeroCarton(Carton);
                 return;
@@ -211,8 +214,8 @@ public class VentanaPrincipal extends javax.swing.JFrame implements IVista {
     public void eliminarCarton(String id) {
         // Intentar limpiar/cerrar todas las VentanaCartones abiertas (más robusto)
         boolean any = false;
-        java.util.List<java.awt.Component> toRemove = new java.util.ArrayList<>();
-        for (java.awt.Component c : desktopPanePrincipal.getComponents()) {
+        List<java.awt.Component> toRemove = new ArrayList<>();
+        for (Component c : desktopPanePrincipal.getComponents()) {
             if (c instanceof VentanaCartones) {
                 VentanaCartones vc = (VentanaCartones) c;
                 String idVisible = vc.getIdTexto();
@@ -228,7 +231,7 @@ public class VentanaPrincipal extends javax.swing.JFrame implements IVista {
         }
 
         // Remover fuera del bucle para evitar ConcurrentModification
-        for (java.awt.Component c : toRemove) {
+        for (Component c : toRemove) {
             desktopPanePrincipal.remove(c);
         }
         if (!toRemove.isEmpty()) {
@@ -243,7 +246,7 @@ public class VentanaPrincipal extends javax.swing.JFrame implements IVista {
 
     @Override
     public void mostarUltimoNumero(int numero) {
-        for (java.awt.Component c : desktopPanePrincipal.getComponents()) {
+        for (Component c : desktopPanePrincipal.getComponents()) {
             if (c instanceof VentanaTombola) {
                 ((VentanaTombola) c).mostrarUltimoNumero(numero);
                 return;
@@ -271,7 +274,7 @@ public class VentanaPrincipal extends javax.swing.JFrame implements IVista {
         // Propagar último número marcado a los cartones para que se pinten
         Integer ultimo = GestorMemoria.obtenerInstancia().obtenerTombola().getUltimoNumero();
         if (ultimo != null && ultimo > 0) {
-            for (java.awt.Component c : desktopPanePrincipal.getComponents()) {
+            for (Component c : desktopPanePrincipal.getComponents()) {
                 if (c instanceof VentanaCartones) {
                     ((VentanaCartones) c).marcarNumeroEnCarton(ultimo);
                 }
@@ -281,7 +284,7 @@ public class VentanaPrincipal extends javax.swing.JFrame implements IVista {
 
     @Override
     public void reiniciarVista() {
-        for (java.awt.Component c : desktopPanePrincipal.getComponents()) {
+        for (Component c : desktopPanePrincipal.getComponents()) {
             if (c instanceof VentanaTablero) {
                 ((VentanaTablero) c).reiniciarTablero();
             }

@@ -7,6 +7,12 @@ package Vista;
 import Controlador.Controlador;
 import Modelo.Carton;
 import Modelo.GestorMemoria;
+import java.awt.Color;
+import java.awt.Component;
+import java.util.ArrayList;
+import java.util.List;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 
 
 /**
@@ -429,15 +435,15 @@ public class VentanaCartones extends javax.swing.JInternalFrame{
         // Pedir fila, columna y valor para edición manual
         String id = tblId.getText();
         if (id == null || id.isEmpty()) {
-            javax.swing.JOptionPane.showMessageDialog(this, "Ingrese el ID del cartón antes de editar.");
+            JOptionPane.showMessageDialog(this, "Ingrese el ID del cartón antes de editar.");
             return;
         }
 
-        String filas = javax.swing.JOptionPane.showInputDialog(this, "Fila (1-5):");
+        String filas = JOptionPane.showInputDialog(this, "Fila (1-5):");
         if (filas == null) return;
-        String colum = javax.swing.JOptionPane.showInputDialog(this, "Columna (1-5):");
+        String colum = JOptionPane.showInputDialog(this, "Columna (1-5):");
         if (colum == null) return;
-        String valor = javax.swing.JOptionPane.showInputDialog(this, "Valor (0 para borrar):");
+        String valor = JOptionPane.showInputDialog(this, "Valor (0 para borrar):");
         if (valor == null) return;
 
         try {
@@ -452,7 +458,7 @@ public class VentanaCartones extends javax.swing.JInternalFrame{
                 if (c != null) mostrarCarton(c);
             }
         } catch (NumberFormatException ex) {
-            javax.swing.JOptionPane.showMessageDialog(this, "Entrada inválida.");
+            JOptionPane.showMessageDialog(this, "Entrada inválida.");
         }
     }//GEN-LAST:event_btnGuaradarManualActionPerformed
 
@@ -479,13 +485,13 @@ public class VentanaCartones extends javax.swing.JInternalFrame{
             }
             sb.append("\n");
         }
-        javax.swing.JOptionPane.showMessageDialog(this, sb.toString(), "Cartón", javax.swing.JOptionPane.INFORMATION_MESSAGE);
+        JOptionPane.showMessageDialog(this, sb.toString(), "Cartón", javax.swing.JOptionPane.INFORMATION_MESSAGE);
 
         // También actualizar la grilla visual del panel 
-        java.util.List<javax.swing.JLabel> labels = new java.util.ArrayList<>();
-        for (java.awt.Component c : jPanel1.getComponents()) {
-            if (c instanceof javax.swing.JLabel) {
-                javax.swing.JLabel l = (javax.swing.JLabel) c;
+        List<JLabel> labels = new ArrayList<>();
+        for (Component c : jPanel1.getComponents()) {
+            if (c instanceof JLabel) {
+                JLabel l = (JLabel) c;
                 // Ignorar encabezados B I N G O (fuente más grande)
                 if (l.getFont().getSize() <= 14) {
                     labels.add(l);
@@ -506,7 +512,7 @@ public class VentanaCartones extends javax.swing.JInternalFrame{
             int idx = 0;
             for (int i = 0; i < 5; i++) {
                 for (int j = 0; j < 5; j++) {
-                    javax.swing.JLabel lab = labels.get(idx++);
+                    JLabel lab = labels.get(idx++);
                     int val = nums[i][j];
                     lab.setText(val == 0 ? "" : String.valueOf(val));
                     lab.setOpaque(false);
@@ -522,9 +528,9 @@ public class VentanaCartones extends javax.swing.JInternalFrame{
     }
 
     public void marcarNumeroEnCarton(int numero) {
-        for (java.awt.Component c : jPanel1.getComponents()) {
-            if (c instanceof javax.swing.JLabel) {
-                javax.swing.JLabel l = (javax.swing.JLabel) c;
+        for (Component c : jPanel1.getComponents()) {
+            if (c instanceof JLabel) {
+                JLabel l = (JLabel) c;
                 String text = l.getText();
                 if (text != null && !text.isEmpty()) {
                     try {
@@ -543,12 +549,12 @@ public class VentanaCartones extends javax.swing.JInternalFrame{
     }
 
     public void reiniciarVisual() {
-        for (java.awt.Component c : jPanel1.getComponents()) {
-            if (c instanceof javax.swing.JLabel) {
-                javax.swing.JLabel l = (javax.swing.JLabel) c;
+        for (Component c : jPanel1.getComponents()) {
+            if (c instanceof JLabel) {
+                javax.swing.JLabel l = (JLabel) c;
                 l.setOpaque(false);
                 l.setBackground(null);
-                l.setForeground(java.awt.Color.BLACK);
+                l.setForeground(Color.BLACK);
             }
         }
     }
@@ -558,9 +564,9 @@ public class VentanaCartones extends javax.swing.JInternalFrame{
         tblId.setText("");
 
         // Limpiar textos y estilos de las etiquetas del cartón
-        for (java.awt.Component c : jPanel1.getComponents()) {
-            if (c instanceof javax.swing.JLabel) {
-                javax.swing.JLabel l = (javax.swing.JLabel) c;
+        for (Component c : jPanel1.getComponents()) {
+            if (c instanceof JLabel) {
+                JLabel l = (JLabel) c;
                 String txt = l.getText();
                 // No borrar los encabezados "B","I","N","G","O" ni el título "Tabla Carton"
                 if (txt != null) {
@@ -572,7 +578,7 @@ public class VentanaCartones extends javax.swing.JInternalFrame{
                 l.setText("");
                 l.setOpaque(false);
                 l.setBackground(null);
-                l.setForeground(java.awt.Color.BLACK);
+                l.setForeground(Color.BLACK);
             }
         }
     }
