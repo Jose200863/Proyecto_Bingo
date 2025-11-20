@@ -214,7 +214,7 @@ public class VentanaPrincipal extends javax.swing.JFrame implements IVista {
     public void eliminarCarton(String id) {
         // Intentar limpiar/cerrar todas las VentanaCartones abiertas (más robusto)
         boolean any = false;
-        List<java.awt.Component> toRemove = new ArrayList<>();
+        List<Component> toRemove = new ArrayList<>();
         for (Component c : desktopPanePrincipal.getComponents()) {
             if (c instanceof VentanaCartones) {
                 VentanaCartones vc = (VentanaCartones) c;
